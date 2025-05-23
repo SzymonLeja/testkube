@@ -2,10 +2,10 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export default function () {
-  const res = http.get('https://storage.googleapis.com/perf-test-static-page-bucket/testkube-test-page-lorem-ipsum/index.html');
+  const res = http.get('http://20.229.146.182:8081/api/auctions/1');
   check(res, { 'status was 200': (r) => r.status == 200 });
   check(res, {
     'verify partial text': (r) =>
-      r.body.includes('Testkube test page - Lipsum'),
+      r.body.includes('id'),
   });
 }
